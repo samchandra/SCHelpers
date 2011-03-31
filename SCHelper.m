@@ -55,18 +55,14 @@
 	Setting *result;
 	if ([mutableFetchResults lastObject] == nil) {
         
-#if DEBUG_CORE_DATA_APP_SETTING        
-		LogMessageCompat(@"I am SCHelper creating a new setting record");
-#endif    
+		SCLog(@"I am SCHelper creating a new setting record");
 		
 		// Create setting record
 		Setting *newSetting = (Setting *)[NSEntityDescription insertNewObjectForEntityForName:@"Setting" inManagedObjectContext:[SCHelper moc]];
 		
 		if (![[SCHelper moc] save:&error]) {
             
-#if DEBUG_CORE_DATA_APP_SETTING
-        LogMessageCompat(@"Setting record cannot be created");
-#endif
+        SCLog(@"Setting record cannot be created");
             
 		}
 		
@@ -74,10 +70,8 @@
 	}
 	else {
         
-#if DEBUG_CORE_DATA_APP_SETTING
-		LogMessageCompat(@"I am SCHelper returning an existing record");
-		//CFShow([mutableFetchResults lastObject]);        
-#endif
+		SCLog(@"I am SCHelper returning an existing record");
+		//SCLog(@"%@", [mutableFetchResults lastObject]);        
 
 		// Return an existing setting record
 		result = [mutableFetchResults lastObject];
@@ -186,28 +180,29 @@
 #pragma mark -
 #pragma make UIImage Helper
 
-- (UIImage *)generateThumbFillSize:(CGSize)viewsize {
-	CGSize size = self.size;
-	
-	CGFloat scalex = viewsize.width / size.width;
-	CGFloat scaley = viewsize.height / size.height; 
-	CGFloat scale = MAX(scalex, scaley);	
-	
-	UIGraphicsBeginImageContext(viewsize);
-	
-	CGFloat width = size.width * scale;
-	CGFloat height = size.height * scale;
-	
-	float dwidth = ((viewsize.width - width) / 2.0f);
-	float dheight = ((viewsize.height - height) / 2.0f);
-	
-	CGRect rect = CGRectMake(dwidth, dheight, size.width * scale, size.height * scale);
-	[self drawInRect:rect];
-	
+- (UIImage *)generateThumbFillSize:(CGSize)viewsize 
+{
+    CGSize size = self.size;
+    
+    CGFloat scalex = viewsize.width / size.width;
+    CGFloat scaley = viewsize.height / size.height; 
+    CGFloat scale = MAX(scalex, scaley);	
+    
+    UIGraphicsBeginImageContext(viewsize);
+    
+    CGFloat width = size.width * scale;
+    CGFloat height = size.height * scale;
+    
+    float dwidth = ((viewsize.width - width) / 2.0f);
+    float dheight = ((viewsize.height - height) / 2.0f);
+    
+    CGRect rect = CGRectMake(dwidth, dheight, size.width * scale, size.height * scale);
+    [self drawInRect:rect];
+    
     UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();  
-	
-	CFShow(newimg);
+
+    SCLog("%@", newimg);
     return newimg;  
 	
 }
