@@ -1,9 +1,9 @@
 //
 //  SCHelper.h
-//  CycleCarriage
+// 
 //
 //  Created by Samuel Chandra on 10/27/10.
-//  Copyright 2010 Buuuk Pte Ltd. All rights reserved.
+//  Copyright 2010 Samuel Chandra. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -42,7 +42,7 @@
 #pragma mark -
 #pragma mark Application Delegate
 // Application Specific
-+ (CharlesAndKeithAppDelegate *)appDelegate;
++ (id)appDelegate;
 
 #pragma mark -
 #pragma mark Core Data

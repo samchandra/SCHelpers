@@ -14,8 +14,6 @@
 #import "CharlesAndKeithAppDelegate.h"
 #import "Setting.h"
 
-#define DEBUG_CORE_DATA_APP_SETTING 1
-
 //
 // SCHelper
 //
