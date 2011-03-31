@@ -1,9 +1,9 @@
 //
 //  SCGetRequest.m
-//  CharlesAndKeith
+//  
 //
 //  Created by Samuel Chandra on 12/7/10.
-//  Copyright 2010 Buuuk. All rights reserved.
+//  Copyright 2010 Samuel Chandra. All rights reserved.
 //
 
 #import "SCGetRequest.h"

@@ -1,9 +1,11 @@
 //
 //  SCPostRequest.h
-//  Pedro
+//  For doing post request, it has dependency on:
+//  1. ASIHTTP Library
+//  2. TouchJSON library
 //
 //  Created by Samuel Chandra on 1/6/11.
-//  Copyright 2011 Buuuk. All rights reserved.
+//  Copyright 2011 Samuel Chandra. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

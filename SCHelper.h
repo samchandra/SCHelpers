@@ -1,6 +1,6 @@
 //
 //  SCHelper.h
-// 
+//  Helper class for making thing easier
 //
 //  Created by Samuel Chandra on 10/27/10.
 //  Copyright 2010 Samuel Chandra. All rights reserved.
@@ -9,28 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-// Custom App Services Notification
-#define kCurrentLocationUpdatedNotification @"CurrentLocationUpdated"
 // Color codes
 #define kNonEditableTextColor [UIColor colorWithRed:.318 green:0.4 blue:.569 alpha:1.0]
 #define kColorPink			  [UIColor colorWithRed:1.0 green:192.0/255.0 blue:203.0/255.0 alpha:1.0]
-
-// DataEntryType for table cell rows
-#define kDataEntryTypeString        1
-#define kDataEntryTypeText          2
-#define kDataEntryTypeNumber        3
-#define kDataEntryTypeSelection     4
-#define kDataEntryTypeDateSelection 5
-#define kDataEntryTypeLabel         6
-
-// PickerView
-#define kDatePickerView   101
-#define kCustomPickerView 102
-
-//
-// Application Specific
-//
-@class Setting;
 
 //
 // SCHelper
@@ -40,23 +21,29 @@
 
 #pragma mark -
 #pragma mark Application Delegate
-// Application Specific
+
+// Application AppDelegate instance
 + (id)appDelegate;
 
 #pragma mark -
 #pragma mark Core Data
 + (NSManagedObjectContext *)moc;
 + (NSManagedObjectModel *)mom;
-+ (Setting *)appSetting;
 
 #pragma mark -
 #pragma mark Resources Folder
 + (NSString *)documentsFolder;
++ (NSString *)documentsFolderWithPath:(NSString *)path;
+
+#pragma mark -
+#pragma mark Form Helper
+// Return string or nil by checking its length
++ (NSString *)formStringWithString:(NSString *)stringData;
 
 @end
 
 //
-// NSDate (SCHelper)
+// NSDate Category
 //
 @interface NSDate (SCHelper) 
 - (NSString *)stringShortDate;
@@ -74,7 +61,7 @@
 @end
 
 //
-// UIImage (SCHelper)
+// UIImage Category
 //
 @interface UIImage (SCHelper)
 - (UIImage *)generateThumbFillSize:(CGSize)viewsize;
@@ -82,7 +69,7 @@
 @end
 
 //
-// NSString (SCHelper)
+// NSString Category
 //
 @interface NSString (SCHelper)
 - (NSString *)stringForDisplay;

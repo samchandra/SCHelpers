@@ -1,13 +1,12 @@
 //
 //  SCLocationManager.m
-//  Pedro
+//  
 //
 //  Created by Samuel Chandra on 12/2/10.
-//  Copyright 2010 Buuuk. All rights reserved.
+//  Copyright 2010 Samuel Chandra. All rights reserved.
 //
 
 #import "SCLocationManager.h"
-//#import "FlurryAPI.h"
 
 static CLLocationAccuracy const kRegionAccuracy = 100.0; // meters
 static SCLocationManager *_sharedLocationManager = nil;
@@ -54,7 +53,7 @@ static SCLocationManager *_sharedLocationManager = nil;
 			locationManager = [[CLLocationManager alloc] init];
 			locationManager.delegate = self;
 			locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-			locationManager.distanceFilter = 5.0f; // in meters
+			locationManager.distanceFilter = 10.0f; // in meters
 		}
 	}
 	
@@ -86,7 +85,6 @@ static SCLocationManager *_sharedLocationManager = nil;
 	// The first location update is always stored as initial value
 	if (!self.currentLocation) {
 		self.currentLocation = newLocation;
-		//[FlurryAPI setLocation:newLocation];
 		
 		// Post Notification that current location has been updated
 		[[NSNotificationCenter defaultCenter] postNotificationName:kCurrentLocationUpdatedNotification object:self];
@@ -95,7 +93,6 @@ static SCLocationManager *_sharedLocationManager = nil;
 	// Accuracy is better so we record it
 	else if (newLocation.horizontalAccuracy < self.currentLocation.horizontalAccuracy) {	
 		self.currentLocation = newLocation;
-		//[FlurryAPI setLocation:newLocation];
 		
 		// Post Notification that current location has been updated
 		[[NSNotificationCenter defaultCenter] postNotificationName:kCurrentLocationUpdatedNotification object:self];

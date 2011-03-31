@@ -37,49 +37,6 @@
 	return [[SCHelper appDelegate] managedObjectModel];
 }
 
-+ (Setting *)appSetting {
-	// Create Request
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	
-	// Set Entity
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Setting" inManagedObjectContext:[SCHelper moc]];
-	[request setEntity:entity];
-	
-	// Fetch request
-	NSError *error;
-	NSMutableArray *mutableFetchResults = [[[[SCHelper moc] executeFetchRequest:request error:&error] mutableCopy] autorelease];
-	
-	// Release request
-	[request release];
-	
-	Setting *result;
-	if ([mutableFetchResults lastObject] == nil) {
-        
-		SCLog(@"I am SCHelper creating a new setting record");
-		
-		// Create setting record
-		Setting *newSetting = (Setting *)[NSEntityDescription insertNewObjectForEntityForName:@"Setting" inManagedObjectContext:[SCHelper moc]];
-		
-		if (![[SCHelper moc] save:&error]) {
-            
-        SCLog(@"Setting record cannot be created");
-            
-		}
-		
-		result = newSetting;
-	}
-	else {
-        
-		SCLog(@"I am SCHelper returning an existing record");
-		//SCLog(@"%@", [mutableFetchResults lastObject]);        
-
-		// Return an existing setting record
-		result = [mutableFetchResults lastObject];
-	}
-	
-	return result;
-}
-
 
 #pragma mark -
 #pragma mark Resources Folder
@@ -94,6 +51,7 @@
 
 #pragma mark -
 #pragma mark Form Helper
+
 + (NSString *)formStringWithString:(NSString *)stringData {
 	if ( (!stringData) || (!([stringData length] > 0)) ) {
 		return nil;
@@ -106,12 +64,12 @@
 @end
 
 //
-// NSDate (SCHelper)
+// NSDate Category
 //
 @implementation NSDate (SCHelper)
 
 #pragma mark -
-#pragma mark Date Helpers
+#pragma mark Date Category
 
 - (NSString *)stringShortDate {
 	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -173,12 +131,12 @@
 @end
 
 //
-// UIImage (SCHelper)
+// UIImage Category
 //
 @implementation UIImage (SCHelper)
 
 #pragma mark -
-#pragma make UIImage Helper
+#pragma make UIImage Category
 
 - (UIImage *)generateThumbFillSize:(CGSize)viewsize 
 {
@@ -202,15 +160,13 @@
     UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();  
 
-    SCLog("%@", newimg);
-    return newimg;  
-	
+    return newimg;  	
 }
 
 @end
 
 //
-// NSString (SCHelper)
+// NSString Category
 //
 @implementation NSString (SCHelper)
 - (NSString *)stringForDisplay {

@@ -1,9 +1,11 @@
 //
 //  SCGetRequest.h
-//  CharlesAndKeith
+//  Helper class to do GET request. It has dependency on:
+//  1. ASIHTTP library
+//  2. TouchJSON library
 //
 //  Created by Samuel Chandra on 12/7/10.
-//  Copyright 2010 Buuuk. All rights reserved.
+//  Copyright 2010 Samuel Chandra. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

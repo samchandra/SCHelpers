@@ -1,9 +1,9 @@
 //
 //  SCPostRequest.m
-//  Pedro
+//  
 //
 //  Created by Samuel Chandra on 1/6/11.
-//  Copyright 2011 Buuuk. All rights reserved.
+//  Copyright 2011 Samuel Chandra. All rights reserved.
 //
 
 #import "SCPostRequest.h"
