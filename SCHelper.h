@@ -30,7 +30,6 @@
 //
 // Application Specific
 //
-@class CharlesAndKeithAppDelegate;
 @class Setting;
 
 //

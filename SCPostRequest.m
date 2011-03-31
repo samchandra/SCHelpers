@@ -21,7 +21,7 @@
 {
 	self = [super init];
 	if (self) {
-		DebugLog(@"I am SCPostRequest initWithURLString: %@", urlString);
+		SCLog(@"I am SCPostRequest initWithURLString: %@", urlString);
 		[self setRequestURL:[NSURL URLWithString:urlString]];
 		CFShow(self.requestURL);
 		

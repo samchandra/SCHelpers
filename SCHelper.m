@@ -1,9 +1,8 @@
 //
 //  SCHelper.m
-//  CycleCarriage
 //
 //  Created by Samuel Chandra on 10/27/10.
-//  Copyright 2010 Buuuk Pte Ltd. All rights reserved.
+//  Copyright 2010 Samuel Chandra. All rights reserved.
 //
 
 #import "SCHelper.h"
@@ -11,7 +10,6 @@
 //
 // Application Specific
 //
-#import "CharlesAndKeithAppDelegate.h"
 #import "Setting.h"
 
 //
@@ -24,8 +22,8 @@
 
 // Application Specific
 // Return the Application Delegate singleton
-+ (CharlesAndKeithAppDelegate *)appDelegate {
-	return ((CharlesAndKeithAppDelegate *)[[UIApplication sharedApplication] delegate]);	
++ (id)appDelegate {
+	return [[UIApplication sharedApplication] delegate];	
 }
 
 #pragma mark -

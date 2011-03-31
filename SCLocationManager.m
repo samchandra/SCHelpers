@@ -7,7 +7,7 @@
 //
 
 #import "SCLocationManager.h"
-#import "FlurryAPI.h"
+//#import "FlurryAPI.h"
 
 static CLLocationAccuracy const kRegionAccuracy = 100.0; // meters
 static SCLocationManager *_sharedLocationManager = nil;
@@ -74,32 +74,32 @@ static SCLocationManager *_sharedLocationManager = nil;
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	// Respond to the rare location manager failure
-	DebugLog(@"Location manager encountered an error: %@", [error localizedDescription]);
+	SCLog(@"Location manager encountered an error: %@", [error localizedDescription]);
 	return;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation 
 		   fromLocation:(CLLocation *)oldLocation {
 	
-	DebugLog(@"Location Manager updating location");
+	SCLog(@"Location Manager updating location");
 	
 	// The first location update is always stored as initial value
 	if (!self.currentLocation) {
 		self.currentLocation = newLocation;
-		[FlurryAPI setLocation:newLocation];
+		//[FlurryAPI setLocation:newLocation];
 		
 		// Post Notification that current location has been updated
 		[[NSNotificationCenter defaultCenter] postNotificationName:kCurrentLocationUpdatedNotification object:self];
-		DebugLog(@"Location Manager kCurrentLocationUpdateNotification");
+		SCLog(@"Location Manager kCurrentLocationUpdateNotification");
 	}
 	// Accuracy is better so we record it
 	else if (newLocation.horizontalAccuracy < self.currentLocation.horizontalAccuracy) {	
 		self.currentLocation = newLocation;
-		[FlurryAPI setLocation:newLocation];
+		//[FlurryAPI setLocation:newLocation];
 		
 		// Post Notification that current location has been updated
 		[[NSNotificationCenter defaultCenter] postNotificationName:kCurrentLocationUpdatedNotification object:self];
-		DebugLog(@"Location Manager kCurrentLocationUpdateNotification");		
+		SCLog(@"Location Manager kCurrentLocationUpdateNotification");		
 	}
 	// Accuracy is worse so do nothing
 	else {
