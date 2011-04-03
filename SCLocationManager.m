@@ -18,7 +18,7 @@ static SCLocationManager *_sharedLocationManager = nil;
 #pragma mark -
 #pragma mark Class Methods
 
-+ (SCLocationManager *)sharedLocationManager {
++ (SCLocationManager *)sharedManager {
 	if (!_sharedLocationManager) {
 		_sharedLocationManager = [[[self class] alloc] init];
 	}

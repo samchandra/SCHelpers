@@ -18,7 +18,8 @@
 	CLLocation *currentLocation;
 }
 
-+ (SCLocationManager *)sharedLocationManager;
++ (SCLocationManager *)sharedManager;
++ (BOOL)checkLocationServiceAvailability;
 
 @property (retain) CLLocation *currentLocation;
 

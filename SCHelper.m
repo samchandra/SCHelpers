@@ -8,11 +8,6 @@
 #import "SCHelper.h"
 
 //
-// Application Specific
-//
-#import "Setting.h"
-
-//
 // SCHelper
 //
 @implementation SCHelper
