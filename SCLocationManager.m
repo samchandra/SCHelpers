@@ -15,13 +15,17 @@ static SCLocationManager *_sharedLocationManager = nil;
 
 @synthesize currentLocation;
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark class methods
 
 + (SCLocationManager *)sharedManager {
 	if (!_sharedLocationManager) {
+        
+        // This will call the - init method and setup all the initial states
+        // please note that self keyword in class methods refers to the class object
+        // and not to an instance of the class itself
 		_sharedLocationManager = [[[self class] alloc] init];
 	}
+    
 	return _sharedLocationManager;
 }
 
@@ -43,17 +47,17 @@ static SCLocationManager *_sharedLocationManager = nil;
 	}
 }
 
-#pragma mark -
-#pragma mark Instance Methods
+#pragma mark instance methods
 
 - (id)init {
+    
 	if ([[self class] checkLocationServiceAvailability]) {
 		
 		if ((self = [super init])) {
 			locationManager = [[CLLocationManager alloc] init];
 			locationManager.delegate = self;
 			locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-			locationManager.distanceFilter = 10.0f; // in meters
+			locationManager.distanceFilter = 5.0f; // in meters
 		}
 	}
 	
@@ -73,14 +77,14 @@ static SCLocationManager *_sharedLocationManager = nil;
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	// Respond to the rare location manager failure
-	SCLog(@"Location manager encountered an error: %@", [error localizedDescription]);
+	SCLog(@"... Location manager encountered an error: %@", [error localizedDescription]);
 	return;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation 
 		   fromLocation:(CLLocation *)oldLocation {
 	
-	SCLog(@"Location Manager updating location");
+	SCLog(@"... Location Manager location update received");
 	
 	// The first location update is always stored as initial value
 	if (!self.currentLocation) {
@@ -88,7 +92,6 @@ static SCLocationManager *_sharedLocationManager = nil;
 		
 		// Post Notification that current location has been updated
 		[[NSNotificationCenter defaultCenter] postNotificationName:kCurrentLocationUpdatedNotification object:self];
-		SCLog(@"Location Manager kCurrentLocationUpdateNotification");
 	}
 	// Accuracy is better so we record it
 	else if (newLocation.horizontalAccuracy < self.currentLocation.horizontalAccuracy) {	
@@ -96,7 +99,6 @@ static SCLocationManager *_sharedLocationManager = nil;
 		
 		// Post Notification that current location has been updated
 		[[NSNotificationCenter defaultCenter] postNotificationName:kCurrentLocationUpdatedNotification object:self];
-		SCLog(@"Location Manager kCurrentLocationUpdateNotification");		
 	}
 	// Accuracy is worse so do nothing
 	else {
