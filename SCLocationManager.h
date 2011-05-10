@@ -10,7 +10,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-// Custom App Services Notification
+// Custom Notification when a location update is created, other part of the code
+// just need to observe this notification to receive location update
 #define kCurrentLocationUpdatedNotification @"CurrentLocationUpdated"
 
 @interface SCLocationManager : NSObject <CLLocationManagerDelegate> {
