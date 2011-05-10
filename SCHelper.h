@@ -73,5 +73,8 @@
 //
 @interface NSString (SCHelper)
 - (NSString *)stringForDisplay;
+- (NSString *)flattenHTML;
+- (NSString *)MD5;
+
 
 @end
