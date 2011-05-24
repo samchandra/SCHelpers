@@ -24,6 +24,7 @@
 
 // Application AppDelegate instance
 + (id)appDelegate;
++ (UIWindow *)window;
 
 #pragma mark -
 #pragma mark Core Data

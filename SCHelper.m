@@ -17,8 +17,14 @@
 
 // Application Specific
 // Return the Application Delegate singleton
-+ (id)appDelegate {
++ (id)appDelegate 
+{
 	return [[UIApplication sharedApplication] delegate];	
+}
+
++ (UIWindow *)window 
+{
+    return [[SCHelper appDelegate] window];
 }
 
 #pragma mark -
