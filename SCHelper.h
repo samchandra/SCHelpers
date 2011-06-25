@@ -25,18 +25,16 @@
 // Application AppDelegate instance
 + (id)appDelegate;
 
-#pragma mark -
-#pragma mark Core Data
+#pragma mark - Core Data
 + (NSManagedObjectContext *)moc;
 + (NSManagedObjectModel *)mom;
 
-#pragma mark -
-#pragma mark Resources Folder
+#pragma mark - Resources Folder
 + (NSString *)documentsFolder;
 + (NSString *)documentsFolderWithPath:(NSString *)path;
++ (NSURL *)applicationDocumentsDirectoryURL;
 
-#pragma mark -
-#pragma mark Form Helper
+#pragma mark - Form Helper
 // Return string or nil by checking its length
 + (NSString *)formStringWithString:(NSString *)stringData;
 

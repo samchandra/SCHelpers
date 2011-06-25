@@ -12,8 +12,7 @@
 //
 @implementation SCHelper
 
-#pragma mark -
-#pragma mark Application Delegate
+#pragma mark - Application Delegate
 
 // Application Specific
 // Return the Application Delegate singleton
@@ -21,8 +20,7 @@
 	return [[UIApplication sharedApplication] delegate];	
 }
 
-#pragma mark -
-#pragma mark Core Data
+#pragma mark - Core Data
 
 + (NSManagedObjectContext *)moc {
 	return [[SCHelper appDelegate] managedObjectContext];
@@ -42,6 +40,12 @@
 
 + (NSString *)documentsFolderWithPath:(NSString *)path {
 	return [[self documentsFolder] stringByAppendingPathComponent:path];
+}
+
++ (NSURL *)applicationDocumentsDirectoryURL
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory 
+                                                   inDomains:NSUserDomainMask] lastObject];
 }
 
 #pragma mark -
