@@ -24,6 +24,7 @@
 
 // Application AppDelegate instance
 + (id)appDelegate;
++ (UIWindow *)window;
 
 #pragma mark - Core Data
 + (NSManagedObjectContext *)moc;
@@ -71,5 +72,8 @@
 //
 @interface NSString (SCHelper)
 - (NSString *)stringForDisplay;
+- (NSString *)flattenHTML;
+- (NSString *)MD5;
+
 
 @end
