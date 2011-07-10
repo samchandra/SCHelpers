@@ -19,7 +19,7 @@ static SCReverseGeocoder *_sharedGeocoderManager = nil;
 {
     if (!_sharedGeocoderManager)
     {
-        SCLog(@"... shared manager created")
+        SCLog(@"... shared manager created");
         _sharedGeocoderManager = [[[self class] alloc] init];
     }
     
