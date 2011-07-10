@@ -1,3 +1,8 @@
 == SCHelpers
 
 Collection of classes that is used to fasten iOS development
+
+It requires the following libraries:
+ASIHTTP
+TouchJSON
+

@@ -31,7 +31,7 @@
 }
 
 - (void)sendRequest {
-	DebugLog(@"PageMe Server User Registration called");
+	SCLog(@"PageMe Server User Registration called");
 	
 	UIDevice *device = [UIDevice currentDevice];
 	
